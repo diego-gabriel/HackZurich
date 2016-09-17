@@ -52,7 +52,38 @@ function suggest(){
 	}
 }
 
+function onDeviceReady(){
+	var res = bluetoothle.initialize(bluetoothReady, bluetoothError, true);
+	console.log("Bluetooth: " + (JSON.stringify(res)));
+
+}
+
+function bluetoothReady(){
+	console.log("Bluetooth ready");
+	var result = bluetoothle.startScan(bluetoothScanning, bluetoothError, []);
+	console.log("Bluetooth result: "+JSON.stringify(result));
+}
+
+function bluetoothScanning(obj){
+	console.log("Bluetooth scanning "+JSON.stringify(obj));
+	setTimeout(function(){
+		bluetoothle.stopScan(bluetoothStopped, bluetoothError);
+		console.log("Bluetooth just stopped");
+	}, 30000);
+
+}
+
+function bluetoothStopped(){
+	console.log("Bluetooth scan stopped");
+}
+
+function bluetoothError(){
+	console.log("Bluetooth error");
+}
+
 $$("#new-item-name").keyup(suggest);
+document.addEventListener('deviceready', onDeviceReady, false);
+
 
 
 
