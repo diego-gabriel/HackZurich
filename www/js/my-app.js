@@ -51,8 +51,62 @@ function suggest(){
 		$$("#results").text("");
 	}
 }
+//file
+function getList(){
+	var list;
+	if (localStorage.itemList)
+		list = JSON.parse(localStorage.itemList);
+	else {
+		list = new Array();
+		localStorage.itemList = JSON.stringify(list);
+	}
+	return list;
+}
+function saveNewItem(){
+	var list = getList();
+	var item = $$("#new-item-name").val();
+	var size = Object.keys(list).length;
+	list[size] = item;
+	localStorage.setItem("itemList", JSON.stringify(list));
+	console.log(list);
+}
+
+//bluetooth
+function onDeviceReady(){
+	var res = bluetoothle.initialize(bluetoothReady, bluetoothError, true);
+	console.log("Bluetooth: " + (JSON.stringify(res)));
+
+}
+
+function bluetoothReady(){
+	console.log("Bluetooth ready");
+	var result = bluetoothle.startScan(bluetoothScanning, bluetoothError, []);	
+	setTimeout(function(){
+		bluetoothle.stopScan(bluetoothStopped, bluetoothError);
+		console.log("Bluetooth just stopped");
+	}, 1000);
+}
+
+function bluetoothScanning(obj){
+	if (obj.status == "scanResult" && obj.address == "F0:81:00:3F:FD:99"){
+		console.log("Bluetooth: "+JSON.stringify(obj));
+	}
+}
+
+function bluetoothStopped(){
+	console.log("Bluetooth scan stopped");
+}
+
+function bluetoothError(){
+	console.log("Bluetooth error");
+}
+//end bluetooth
+
 
 $$("#new-item-name").keyup(suggest);
+$$("#add").click(saveNewItem);
+document.addEventListener('deviceready', onDeviceReady, false);
+
 
 // Preload the shopping list.
 shoppingList = [{ text:"Salami", ean:null}, { text:"Mittlerer Arabica Kaffee", ean:9182736451928}];

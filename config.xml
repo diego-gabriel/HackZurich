@@ -25,6 +25,7 @@
   <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2"/>
   <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0"/>
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
+
   <icon src="icon.png"/>
   <platform name="android">
     <icon src="www/res/icon/android/drawable-ldpi-icon.png" density="ldpi"/>
@@ -39,12 +40,6 @@
     <splash src="www/res/screen/android/drawable-land-xhdpi-screen.png" density="land-xhdpi"/>
     <splash src="www/res/screen/android/drawable-land-xxhdpi-screen.png" density="land-xxhdpi"/>
     <splash src="www/res/screen/android/drawable-land-xxxhdpi-screen.png" density="land-xxxhdpi"/>
-    <splash src="www/res/screen/android/drawable-port-ldpi-screen.png" density="port-ldpi"/>
-    <splash src="www/res/screen/android/drawable-port-mdpi-screen.png" density="port-mdpi"/>
-    <splash src="www/res/screen/android/drawable-port-hdpi-screen.png" density="port-hdpi"/>
-    <splash src="www/res/screen/android/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
-    <splash src="www/res/screen/android/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
-    <splash src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
   <platform name="ios">
     <icon src="www/res/icon/ios/icon.png" platform="ios" width="57" height="57"/>
