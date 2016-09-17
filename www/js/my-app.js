@@ -107,13 +107,13 @@ $$("#new-item-name").keyup(suggest);
 $$("#add").click(saveNewItem);
 document.addEventListener('deviceready', onDeviceReady, false);
 
-
 // Preload the shopping list.
-shoppingList = [{ text:"Salami", ean:null}, { text:"Mittlerer Arabica Kaffee", ean:9182736451928}];
+_shoppingList = [{ text:"Salami", ean:null}, { text:"Mittlerer Arabica Kaffee", ean:"9182736451928"}];
 
-getInventoryForBeacon("20CB0314-A24F-0815-AFF9-A98FEAA6F01B", 53341, 11111, compareInventory);
-
-function compareInventory(storeInventory) {
-    alert(storeInventory);
-    alert(shoppingList);
-}
+getInventoryForBeacon("20CB0314-A24F-0815-AFF9-A98FEAA6F01B", 53341, 11111, function(storeInfo, storeInventory) {
+	compareInventory(_shoppingList, storeInfo, storeInventory, function(listItem, storeItem) {
+		// Purchase item.
+		purchaseItem(storeItem);
+		// TODO: Remove itemfrom shopping list. 
+	})
+} );
