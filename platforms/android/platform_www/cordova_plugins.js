@@ -459,6 +459,17 @@ module.exports = [
             "navigator.notification",
             "navigator"
         ]
+    },
+    {
+        "file": "plugins/com.red_folder.phonegap.plugin.backgroundservice.sample/www/myService.js",
+        "id": "com.red_folder.phonegap.plugin.backgroundservice.sample.MyService",
+        "clobbers": [
+            "cordova.plugins.myService"
+        ]
+    },
+    {
+        "file": "plugins/com.red_folder.phonegap.plugin.backgroundservice/www/backgroundService.js",
+        "id": "com.red_folder.phonegap.plugin.backgroundservice.BackgroundService"
     }
 ];
 module.exports.metadata = 
@@ -484,7 +495,9 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "3.2.2",
     "cordova-plugin-statusbar": "2.1.3",
     "cordova-plugin-vibration": "2.1.2",
-    "cordova-plugin-whitelist": "1.2.2"
+    "cordova-plugin-whitelist": "1.2.2",
+    "com.red_folder.phonegap.plugin.backgroundservice.sample": "2.0.0",
+    "com.red_folder.phonegap.plugin.backgroundservice": "2.0.0"
 };
 // BOTTOM OF METADATA
 });
