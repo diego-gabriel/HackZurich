@@ -29,7 +29,6 @@ public class MyService extends BackgroundService {
 
 			Log.d(TAG, msg);
 
-			System.out.println("Working lalalalala");
 		} catch (JSONException e) {
 		}
 		
