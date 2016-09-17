@@ -1,0 +1,29 @@
+function saveNewItem(){
+	var list = getList();
+	var item = $$("#new-item-name").val();
+	var size = Object.keys(list).length;
+	list[size] = item;
+	localStorage.setItem("itemList", JSON.stringify(list));
+	console.log(list);
+
+	addToShoppingList(item, null);
+}
+
+function addToShoppingList(text, ean) {
+	//TODO: Add to shoppingList
+
+	myList.update();
+}
+
+var myList = myApp.virtualList('.list-block.virtual-list', {
+    // Array with plain HTML items
+    items: shoppingList,
+    // Template 7 template to render each item
+    template: '<li class="item-content">' +
+                  '<div class="item-inner">' +
+                      '<div class="item-input">{{text}}</div>' +
+                  '</div>' +
+               '</li>'
+              
+});  
+
