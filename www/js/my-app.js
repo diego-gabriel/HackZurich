@@ -54,5 +54,12 @@ function suggest(){
 
 $$("#new-item-name").keyup(suggest);
 
+// Preload the shopping list.
+shoppingList = [{ text:"Salami", ean:null}, { text:"Mittlerer Arabica Kaffee", ean:9182736451928}];
 
+getInventoryForBeacon("20CB0314-A24F-0815-AFF9-A98FEAA6F01B", 53341, 11111, compareInventory);
 
+function compareInventory(storeInventory) {
+    alert(storeInventory);
+    alert(shoppingList);
+}
