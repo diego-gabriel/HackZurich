@@ -24,7 +24,6 @@ function onMainPageInit(){
 
 	// Hook up event handlers
 	$$("#new-item-name").keyup(suggest);
-	$$(".suggestion-item").click(function(e) { alert(e.class); });
 	$$("#add").click(function() {
 		// Add new item to list.		
 		var newItemInput = $$("#new-item-name");

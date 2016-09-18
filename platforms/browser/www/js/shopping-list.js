@@ -10,7 +10,8 @@ function loadShoppingItems(){
 		window.localStorage.itemList = JSON.stringify(list);
 	}*/
 
-    list = [{ text:"Salami", ean:null}, { text:"Mittlerer Arabica Kaffee", ean:"9182736451928"}];
+//    list = [{ text:"Salami", ean:null}, { text:"Mittlerer Arabica Kaffee", ean:"9182736451928"}];
+    list = [];
 	return list;
 }
 
@@ -68,13 +69,13 @@ function addResults(resultString){
 	$$("#suggestions-title").show();
 	for(var i = 0; i < result.length; i++){
 		var image = result[i].images.thumbnails;
-		var newListItem = createListItem('<img src="'+image+'">', result[i].name, result[i].price+"$");
+		var newListItem = createListItem('<img src="'+image+'">', result[i].name);
 		results.append(newListItem);
 	}
 }
 
-function createListItem(item_media, item_title, item_after){
-	var newListItem = $$('<li class="item-content suggestion-item">'+
+function createListItem(item_media, item_title){
+	var newListItem = $$('<li class="item-content suggestion-item" onClick="$$(\'#new-item-name\').val(\'' + item_title + '\')">'+
 							    '<div class="item-media">'+
 							        item_media+
 							    '</div>'+
@@ -82,10 +83,8 @@ function createListItem(item_media, item_title, item_after){
 							        '<div class="item-title">'+
 							            item_title+
 							        '</div>'+
-							        '<div class="item-after">'+
-							            item_after+
-							        '</div>'+
 							    '</div>'+
 							'</li>');
+
 	return newListItem;
 }
