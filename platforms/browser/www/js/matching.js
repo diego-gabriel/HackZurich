@@ -1,3 +1,11 @@
+function onStoreInfoRetrieved(storeInfo, storeInventory){
+    compareInventory(_shoppingList, storeInfo, storeInventory, function(listItem, storeItem) {
+        // Purchase item.
+        purchaseItem(storeItem);
+        // TODO: Remove itemfrom shopping list. 
+    });
+}
+
 // Compares shopping list with store inventory and alerts on matches.
 function compareInventory(shoppingList, storeInfo, storeInventory, purchaseCallback) {
     for (var i = 0; i < shoppingList.length; i++) {

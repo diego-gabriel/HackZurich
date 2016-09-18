@@ -11,12 +11,7 @@ function getBeaconInfo(mac_address){
 }
 
 function onBeaconFound(beaconData){
-	var __callback = function(){
-		console.log("__Callback");
-	};
-	console.log("found");
-	//replace callback
-	getInventoryForBeacon(beaconData.uuid, beaconData.majorId, beaconData.minorId, __callback);
+	getInventoryForBeacon(beaconData.uuid, beaconData.majorId, beaconData.minorId, onStoreInfoRetrieved);
 }
 
 function bluetoothFindBeacons(){
