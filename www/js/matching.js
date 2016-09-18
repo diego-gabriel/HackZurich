@@ -1,3 +1,5 @@
+var shownModal = false;
+
 function onStoreInfoRetrieved(storeInfo, storeInventory){
     compareInventory(shoppingList.items, storeInfo, storeInventory, function(listItem, storeItem) {
         // Purchase item.
@@ -12,7 +14,7 @@ function compareInventory(shoppingList, storeInfo, storeInventory, purchaseCallb
         var listItem = shoppingList[i];
         for (var j = 0; j < storeInventory.length; j++) {
             var storeItem = storeInventory[j];
-            if (isMatch(listItem, storeItem)) {
+            if (isMatch(listItem, storeItem) && !shownModal) {
                 // Define message.
                 var title =  'I\'ve found ' + listItem.text;
                 var message = '\'' + storeItem.product.description + '\' is available at ' + storeInfo.name + '<br/><br/> Price: CHF ' + storeItem.price;  
@@ -24,6 +26,8 @@ function compareInventory(shoppingList, storeInfo, storeInventory, purchaseCallb
                 myApp.modal({
                     title:  title,
                     text: message,
+                    open: function(){alert("opened");},
+                    close: function(){alert("closed");},
                     buttons: [
                     {
                         text: 'Purchase',
@@ -37,7 +41,8 @@ function compareInventory(shoppingList, storeInfo, storeInventory, purchaseCallb
                     },
                     ]
                 });
-
+                // HACK only show one modal at a time
+                shownModal = true;
                 // HACK: Abort check after first item found to avoid late-binding references in callback.
                 return;
 
