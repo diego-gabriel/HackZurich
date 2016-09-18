@@ -71,7 +71,7 @@ public abstract class BackgroundService extends Service {
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);  
 
 		// Should default to a minute
-		return sharedPrefs.getInt(this.getClass().getName() + ".Milliseconds", 500 );	
+		return sharedPrefs.getInt(this.getClass().getName() + ".Milliseconds", 1000 );	
 	}
 
 	public void setMilliseconds(int milliseconds) {
@@ -314,7 +314,7 @@ public abstract class BackgroundService extends Service {
 		if (this.mUpdateTask == null) {
 			this.mUpdateTask = getTimerTask(); 			
 			int milliseconds = getMilliseconds();
-			this.mTimer.schedule(this.mUpdateTask, 1000L, milliseconds);
+			this.mTimer.schedule(this.mUpdateTask, 1000L, 1000);
 		}
 
 		onTimerEnabled();
