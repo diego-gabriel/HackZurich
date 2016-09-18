@@ -7,7 +7,7 @@ function isRegisteredBeacon(mac_address){
 }
 
 function getBeaconInfo(mac_address){
-	return {uuid: "20CB0314-A24F-0815-AFF9-A98FEAA6F01B", majorId: 53341, minorId: 11111};
+	return {uuid: "20CB0314-A24F-0815-AFF9-A98FEAA6F01B", majorId: 53341, minorId: 11111, address: mac_address};
 }
 
 function onBeaconFound(beaconData){
@@ -17,6 +17,8 @@ function onBeaconFound(beaconData){
 			purchaseItem(storeItem);
 			// Remove item from shopping list.
 			removeShoppingItem(listItem.text);
+			// Block beacon
+			beaconBuffer[beaconData.address] = true;
 		})
 	});
 }
@@ -33,7 +35,6 @@ function bluetoothScanSuccess(obj){
 	if (obj.status == "scanResult" && isRegisteredBeacon(obj.address)){
 		if (!beaconBuffer[obj.address]){
 			onBeaconFound(getBeaconInfo(obj.address));
-			beaconBuffer[obj.address] = true;
 		}
 	}
 }
