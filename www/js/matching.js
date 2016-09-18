@@ -9,6 +9,9 @@ function compareInventory(shoppingList, storeInfo, storeInventory, purchaseCallb
                 var title =  'I\'ve found ' + listItem.text;
                 var message = '\'' + storeItem.product.description + '\' is available at ' + storeInfo.name + '<br/><br/> Price: CHF ' + storeItem.price;  
 
+                var currentListItem = listItem;
+                var currentStoreItem = storeItem;
+
                 // Show purchase dialog.
                 myApp.modal({
                     title:  title,
@@ -18,7 +21,7 @@ function compareInventory(shoppingList, storeInfo, storeInventory, purchaseCallb
                         text: 'Purchase',
                         onClick: function() {
                             // Initiate purchase for matched item.
-                            purchaseCallback(listItem, storeItem);
+                            purchaseCallback(currentListItem, currentStoreItem);
                         }
                     },
                     {
@@ -27,8 +30,11 @@ function compareInventory(shoppingList, storeInfo, storeInventory, purchaseCallb
                     ]
                 });
 
-                // Skip to next item after first match found.
-                continue;
+                // HACK: Abort check after first item found to avoid late-binding references in callback.
+                return;
+
+//                // Skip to next item after first match found.
+//                break;
             }
         }
     };
