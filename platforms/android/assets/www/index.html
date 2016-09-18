@@ -21,7 +21,7 @@
     <!-- Views -->
     <div class="views">
       <!-- Your main view, should have "view-main" class -->
-      <div class="view view-main theme-green">
+      <div class="view view-main theme-red">
         <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
         <div class="pages navbar-fixed">
           <!-- Page, "data-page" contains page name -->
@@ -29,42 +29,39 @@
             <div class="navbar">
               <div class="navbar-inner">
                 <div class="center">
-                  Hack Zurich
+                  Scout
                 </div>
               </div>
             </div>
             <div class="toolbar tabbar">
               <div class="toolbar-inner">
-                <a href="#purchase-list-page" class="tab-link active">Purchase list</a>
-                <a href="#new-item-page" class="tab-link active">Add new reminder</a>
+                <a href="#purchase-list-page" class="tab-link active">Shopping list</a>
+                <a href="#new-item-page" class="tab-link active">Add new item</a>
               </div>
             </div>
             <div class="page-content">
               <div class="tabs-swipeable-wrap">
                 <div class="tabs">
                   <div id="purchase-list-page" class="tab active">
-                    <div class="list-block">
-                      <ul id="purchase-list">
-                        
-                      </ul>
+                    <div class="list-block virtual-list">
+                    <!-- keep it empty -->
                     </div>
                   </div>
 
                   <div id="new-item-page" class="tab">
-                    <div class="content-block-title">New element:</div>
                     <div class="list-block">
                       <ul>
                         <li>
                           <div class="item-content">
                             <div class="item-inner">
                               <div class="item-input">
-                                <input type="text" placeholder="Name of the new product" id="new-item-name">
+                                <input type="text" placeholder="New item" id="new-item-name">
                               </div>
                             </div>
                           </div>
                         </li>
                         <li>
-                          <a href="#" class="button button-fill color-green" id="add">Add</a>
+                          <a href="#" class="button button-fill color-red" id="add">Add</a>
                         </li>
                       </ul>
                     </div>
@@ -79,17 +76,20 @@
                   </div>
                 </div>
               </div>
+              <a href="#" class="button button-fill color-red" id="scan">Scan</a>
             </div>
           </div>
         </div>
       </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/bluetooth.js"></script>
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/joy-rest.js"></script>
+    <script type="text/javascript" src="js/matching.js"></script>
+    <script type="text/javascript" src="js/bluetooth.js"></script>
+    <script type="text/javascript" src="js/shopping-list.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
   </body>
 </html> 

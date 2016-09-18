@@ -6,7 +6,7 @@ var _callback;
 function getInventoryForBeacon(uuid, majorId, minorId, callback) {
 
     _callback = callback;
-
+    console.log("requesting "+uuid+" "+majorId+" "+minorId);
     // Create request body. 
     var storeRequest =
     {
