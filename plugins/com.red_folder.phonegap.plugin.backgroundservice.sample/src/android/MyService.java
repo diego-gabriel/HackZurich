@@ -28,8 +28,8 @@ public class MyService extends BackgroundService {
 			result.put("Message", msg);
 
 			Log.d(TAG, msg);
-
-			System.out.println("Working lalalalala");
+			System.out.print("CONSOLE");
+			Log.d("CONSOLE", "CONSOLE sss");
 		} catch (JSONException e) {
 		}
 		

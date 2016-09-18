@@ -5,8 +5,6 @@ var myApp = new Framework7({
     init: false
 });
 
-var bluetoothService = null;
-
 // Export selectors engine
 var $$ = Dom7;
 
@@ -96,19 +94,12 @@ function onDataSaved(obj){
 }
 
 function onDeviceReady(){
-	var serviceName = 'com.red_folder.phonegap.plugin.backgroundservice.sample.MyService';
-
-	var factory = require('com.red_folder.phonegap.plugin.backgroundservice.BackgroundService')
-	module.exports = factory.create(serviceName);
-	//bluetoothInitialize();
-	bluetoothService = cordova.plugins.myService;
-
-	console.log("Service "+(typeof bluetoothService));
+	bluetoothInitialize();
 }
 
 function onMainPageInit(){
 	var list = getList();
-	console.log(list);
+
 	for(var i = 0; i < Object.keys(list).length; i++){
 		appendOnPurchaseList(list[i]);
 	}
