@@ -7,11 +7,18 @@ function isRegisteredBeacon(mac_address){
 }
 
 function getBeaconInfo(mac_address){
-	return {uuid: "20CB0314-A24F-0815-AFF9-A98FEAA6F01B", mayorId: 53341, minorId: 11111};
+	return {uuid: "20CB0314-A24F-0815-AFF9-A98FEAA6F01B", majorId: 53341, minorId: 11111};
 }
 
 function onBeaconFound(beaconData){
-	getInventoryForBeacon(beaconData.uuid, beaconData.majorId, beaconData.minorId, onStoreInfoRetrieved);
+	getInventoryForBeacon(beaconData.uuid, beaconData.majorId, beaconData.minorId, function(storeInfo, storeInventory) {
+		compareInventory(shoppingList.items, storeInfo, storeInventory, function(listItem, storeItem) {
+			// Purchase item.
+			purchaseItem(storeItem);
+			// Remove item from shopping list.
+			removeShoppingItem(listItem.text);
+		})
+	});
 }
 
 function bluetoothFindBeacons(){
